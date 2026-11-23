@@ -204,6 +204,14 @@ WHERE data_quality_status = 'VALID'
        OR profit IS NULL
   );	   
 
+CREATE OR REPLACE VIEW retail.retail_sales_valid AS
+SELECT *
+FROM retail.retail_sales_upd
+WHERE data_quality_status = 'VALID'
+  AND sales > 0
+  AND quantity > 0
+  AND profit >= 0;
+
 select * from retail.retail_sales_Valid; --1762
 select * from retail.retail_sales_upd WHERE data_quality_status = 'VALID'
 and sales > 0 and quantity > 0 and profit >= 0
